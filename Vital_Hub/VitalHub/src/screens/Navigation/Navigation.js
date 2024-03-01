@@ -22,12 +22,16 @@ export const Navigation = ({ navigation }) => {
         onPress={() => navigation.navigate("Home")}/>
 
         <Button 
-        title="ConsultP"
-        onPress={() => navigation.navigate("ConsultP")}/>
-
-        <Button 
         title="SelectClinic"
         onPress={() => navigation.navigate("SelectClinic")}/>
+
+        <Button 
+        title="SelectDoctor"
+        onPress={() => navigation.navigate("SelectDoctor")}/>
+
+        <Button 
+        title="SelectDate"
+        onPress={() => navigation.navigate("SelectDate")}/>
          
     </>
     );

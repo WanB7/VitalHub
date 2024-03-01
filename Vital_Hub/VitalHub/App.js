@@ -2,24 +2,24 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Componentes
 import { Navigation } from './src/screens/Navigation/Navigation';
 import { Login } from './src/screens/Login/Login';
 import { Register } from './src/screens/Register/Register';
-import {EmailCode} from './src/screens/EmailCode/EmailCode'
-import {RecoverPassword} from './src/screens/RecoverPassword/RecoverPassword'
-import {RedefinePassword} from './src/screens/RedefinePassword/RedefinePassword'
+import {EmailCode} from './src/screens/EmailCode/EmailCode';
+import {RecoverPassword} from './src/screens/RecoverPassword/RecoverPassword';
+import {RedefinePassword} from './src/screens/RedefinePassword/RedefinePassword';
 import { Profile } from './src/screens/Profile/Profile';
+import { MedicalRecord } from './src/screens/MedicalRecord/MedicalRecord';
+import { Home } from './src/screens/Home/Home';
+import { SelectClinic } from './src/screens/SelectClinic/SelectClinic.js';
 
 // Import das Fonts
 import { useFonts } from 'expo-font';
 import { MontserratAlternates_600SemiBold, MontserratAlternates_500Medium } from '@expo-google-fonts/montserrat-alternates';
 import { Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_400Regular } from '@expo-google-fonts/quicksand';
 import { StatusBar } from 'react-native';
-import { MedicalRecord } from './src/screens/MedicalRecord/MedicalRecord';
-import { Home } from './src/screens/Home/Home';
-import { ConsultP } from './src/screens/ConsultP/ConsultP';
-import { SelectClinic } from './src/screens/SelectClinic/SelectClinic.js';
+import { SelectDate } from './src/screens/SelectDate/SelectDate.js';
+import { SelectDoctor } from './src/screens/SelectDoctor/SelectDoctor.js';
 
 
 
@@ -109,16 +109,23 @@ export default function App() {
         options={{title: 'Home'}}
         />
 
-        <Stack.Screen
-        name='ConsultP'
-        component={ConsultP}
-        options={{title: 'ConsultP'}}
-        />
 
         <Stack.Screen
         name='SelectClinic'
         component={SelectClinic}
         options={{title: 'SelectClinic'}}
+        />
+
+        <Stack.Screen
+        name='SelectDoctor'
+        component={SelectDoctor}
+        options={{title: 'SelectDoctor'}}
+        />
+
+        <Stack.Screen
+        name='SelectDate'
+        component={SelectDate}
+        options={{title: 'SelectDate'}}
         />
 
       </Stack.Navigator>

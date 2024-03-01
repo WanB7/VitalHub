@@ -41,3 +41,7 @@ export const ButtonBack = styled.TouchableOpacity`
 export const IconGoogle = styled.Image`
     margin-right: 27px;
 `
+
+export const ButtonFull = styled(Button)`
+width: 100%;
+`

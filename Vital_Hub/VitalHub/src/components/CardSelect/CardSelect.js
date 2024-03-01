@@ -1,34 +1,26 @@
-import { ProfileName, TextAge, ViewRow } from '../Card/Style'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import { ViewCardSelect, ViewRow1 } from '../View/View';
-import { ClockCardS, ContainerCardSelect, ContentSelectCard, DataProfileSelect, TextBoldSelect, TextBoldStar, } from './Styled';
+import { Container, TextAv, TextCalendar, TextLoc, TextName, View1, View2, ViewCalendar, ViewStar } from './Styled';
 
-export const Card = () => {
+export const CardSelect = ({ name, loc, aval, date, isSelected }) => {
     return (
-        <ContainerCardSelect>
+        
+        <Container isSelected={isSelected}>
+        <View1>
+            <TextName>{name}</TextName>
+            <TextLoc>{loc}</TextLoc>
+        </View1>
+        <View2>
+            <ViewStar>
+                <AntDesign name="star" size={20} color="#F9A620" />
+                <TextAv>{aval}</TextAv>
+            </ViewStar>
+            <ViewCalendar>
+                <AntDesign name="calendar" size={15} color="#49B3BA" />
+                <TextCalendar>{date}</TextCalendar>
+            </ViewCalendar>
 
-            <ContentSelectCard>
-                <DataProfileSelect>
-                    <ProfileName>Clinica natureh</ProfileName>
-                        <TextAge>São Paulo</TextAge>
-                </DataProfileSelect>  
+        </View2>
+    </Container>
 
-                <ViewCardSelect>
-                    <ViewRow1>
-                        <AntDesign name="star" size={24} color={'#F9A620'}/>
-                        <TextBoldStar>4,5</TextBoldStar>
-                    </ViewRow1>
-
-                    <ViewRow>
-                        <ClockCardS>
-                            <MaterialCommunityIcons name="calendar" size={24} color={'#49B3BA'} />
-                            <TextBoldSelect>seg-sex</TextBoldSelect>
-                        </ClockCardS>
-                    </ViewRow>
-                </ViewCardSelect>
-            </ContentSelectCard>
-
-        </ContainerCardSelect>
     )
 }
