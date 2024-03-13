@@ -1,48 +1,65 @@
-import { useState } from "react";
-import { ButtonFull, ContainerSelectDate, LabelSchedule } from "./Style";
-import { TextCancel, TitleSelect } from "../SelectClinic/Style";
-import FullCalender from "../../components/CalendarSelectDate/CalendarSelectDate";
-import InputSelect from "../../components/InputSelect/InputSelect";
-import { ButtonTitle } from "../../components/Button/Style";
-import ModalConfirmAppointment from "../../components/ModalConfirmAppointment/ModalConfirmAppointment";
 
-export const SelectDate = ({navigation}) => {
+import { useState } from "react";
+import FullCalender from "../../components/CalendarSelectDate/CalendarSelectDate";
+import { ContainerSelectDate } from "../../components/Container/Style"
+import { Title } from "../SelectClinic/Style"
+import { ButtonTitle, LabelSchedule } from "../../components/Title/Style";
+import { BtnFull } from "../../components/Button/Button";
+import { LinkCancelMargin } from "../../components/Link/Style";
+import InputSelect from "../../components/InputSelect/InputSelect";
+import { ModalResumeAppointment } from "../../components/ModalResumeAppointment/ModalResumeAppointment";
+import { ModalSchedule } from "../../components/ModalSchedule/ModalSchedule";
+
+export const SelectDate = ({ navigation }) => {
     const [selectedDate, setSelectedDate] = useState();
     const [selectedTime, setSelectedTime] = useState();
 
-    const Horarios = ["10:30","12:00","12:30","13:00","17:15","17:45","19:00"]  
+    const Horarios = ["10:30", "12:00", "12:30", "13:00", "17:15", "17:45", "19:00"]
 
-    const [showModalConfirm, setShowModalConfirm] = useState(false)
+    const [showModalResume, setShowModalResume] = useState(false)
+    const [showModalSchedule, setShowModalSchedule] = useState(false)
+
+    const onPressHandle = () => {
+        setShowModalSchedule(true)
+        navigation.navigate("Main");
+        
+      }
 
     return (
 
-            <ContainerSelectDate>
-                <TitleSelect>Selecionar Data</TitleSelect>
-                <FullCalender
-                    selectedDate={selectedDate}
-                    handleSelectedDateFn={setSelectedDate}
-                />
-                <LabelSchedule>Selecione um horário disponível</LabelSchedule>
+        <ContainerSelectDate>
+            <Title>Selecionar Data</Title>
+            <FullCalender
+                selectedDate={selectedDate}
+                handleSelectedDateFn={setSelectedDate}
+            />
+            <LabelSchedule>Selecione um horário disponível</LabelSchedule>
 
-                <InputSelect
+            <InputSelect
                 textButton='Selecionar horário'
                 handleSelectedFn={setSelectedTime}
                 data={Horarios}
-                />
+            />
 
-            <ButtonFull onPress={() => {setShowModalConfirm(true)}}>
+            <BtnFull onPress={() => { setShowModalResume(true) }} >
                 <ButtonTitle>CONFIRMAR</ButtonTitle>
-            </ButtonFull>
+            </BtnFull>
 
-            <ModalConfirmAppointment
-                visible={showModalConfirm}
+            <ModalResumeAppointment
+                visible={showModalResume}
                 navigation={navigation}
-                setShowModalConfirm={setShowModalConfirm}
+                setShowModalResume={setShowModalResume}
                 dataConsulta={selectedDate}
                 horarioConsulta={selectedTime}
             />
 
-            <TextCancel onPress={() => {navigation.navigate("HomeUser")}}>Cancelar</TextCancel>
+            <ModalSchedule
+                visible={showModalSchedule}
+                navigation={navigation}
+                setShowModalSchedule={setShowModalSchedule}
+            />
+
+            <LinkCancelMargin onPress={() => onPressHandle()}>Cancelar</LinkCancelMargin>
         </ContainerSelectDate>
     )
 }
